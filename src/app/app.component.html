@@ -1,8 +1,11 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-100">
-  <div class="text-center">
-    <h1 class="text-4xl font-bold text-gray-800">Hello World</h1>
-    <p class="text-lg text-gray-600 mt-2">
-      Welcome to your Angular & Tailwind start page
-    </p>
-  </div>
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+  <h1 class="text-4xl font-bold text-gray-800">{{ title }}</h1>
+  <p class="text-lg text-gray-600 mt-2">
+    Welcome to your slightly more complex Angular app
+  </p>
+
+  <!-- Pass the message to the child component -->
+  <app-message [message]="message"></app-message>
 </div>
+
+<router-outlet></router-outlet>
