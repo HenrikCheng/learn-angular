@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hello from Parent Component';
-  message =
-    'This is a message passed from the AppComponent to the MessageComponent';
+  message = 'This is a message passed from the AppComponent to the DateSelect';
 }

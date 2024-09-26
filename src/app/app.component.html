@@ -1,3 +1,5 @@
+<!-- src/app/app.component.html -->
+
 <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
   <h1 class="text-4xl font-bold text-gray-800">{{ title }}</h1>
   <p class="text-lg text-gray-600 mt-2">
@@ -5,7 +7,7 @@
   </p>
 
   <!-- Pass the message to the child component -->
-  <app-message [message]="message"></app-message>
+  <app-date-select [message]="message"></app-date-select>
 </div>
 
 <router-outlet></router-outlet>
