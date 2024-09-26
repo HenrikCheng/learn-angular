@@ -1,5 +1,9 @@
 <div>
   <p>{{ message }}</p>
-  <input type="date" [(ngModel)]="selectedDate" />
-  <p>Selected Date: {{ selectedDate }}</p>
+  <input type="datetime-local" [(ngModel)]="selectedDateTime" />
+  <p>Selected Date and Time: {{ selectedDateTime }}</p>
+
+  <p>Current Date and Time: {{ currentDateTime }}</p>
+
+  <p>Countdown to Selected Time: {{ currentDateTime }}</p>
 </div>
