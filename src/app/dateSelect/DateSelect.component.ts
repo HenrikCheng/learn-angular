@@ -9,13 +9,16 @@ export class DateSelect implements OnInit, OnDestroy {
 
   selectedDateTime: string = ''; // Stores the selected date and time
   currentDateTime: string = ''; // Stores the current date and time
-  differenceDateTime: string = ''; // Stores the countdown date and time
+  differenceDateTime: string = ''; // Stores the countdown time
   private intervalId: any; // Holds the interval ID for updating time
 
   ngOnInit() {
     this.setCurrentDateTime(); // Set the current date and time
     this.selectedDateTime = new Date().toISOString().substring(0, 16); // Initialize with current date and time
-    this.intervalId = setInterval(() => this.setCurrentDateTime(), 1000); // Update current time every second
+    this.intervalId = setInterval(() => {
+      this.setCurrentDateTime();
+      this.updateDifferenceDateTime(); // Update countdown every second
+    }, 1000); // Update current time every second
   }
 
   ngOnDestroy() {
@@ -25,5 +28,25 @@ export class DateSelect implements OnInit, OnDestroy {
   setCurrentDateTime() {
     const now = new Date(); // Get the current date and time
     this.currentDateTime = now.toLocaleString(); // Format it for display
+  }
+
+  updateDifferenceDateTime() {
+    // New method added
+    const selectedTime = new Date(this.selectedDateTime).getTime(); // Convert selected date to milliseconds
+    const currentTime = new Date().getTime(); // Get current time in milliseconds
+    const difference = selectedTime - currentTime; // Calculate the difference
+
+    if (difference > 0) {
+      // Only calculate if the selected time is in the future
+      const seconds = Math.floor((difference / 1000) % 60);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+      // Format the countdown string
+      this.differenceDateTime = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+      this.differenceDateTime = 'Time has passed'; // Message if time has passed
+    }
   }
 }
