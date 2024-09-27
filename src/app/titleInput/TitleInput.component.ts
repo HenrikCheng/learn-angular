@@ -5,7 +5,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
   templateUrl: './TitleInput.component.html',
 })
 export class TitleInputComponent {
-  @Output() titleSelected = new EventEmitter<string>(); // EventEmitter to pass selected title to parent
+  @Output() titleSelected = new EventEmitter<string>();
 
   inputTitle(title: string) {
     this.titleSelected.emit(title);

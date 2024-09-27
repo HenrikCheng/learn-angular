@@ -6,6 +6,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class DateSelectComponent implements OnInit, OnDestroy {
   selectedDateTime = '';
+  parsedSelectedDateTime = '';
   currentDateTime = '';
   differenceDateTime = '';
   private intervalId: any;
@@ -13,10 +14,11 @@ export class DateSelectComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.setCurrentDateTime();
     this.selectedDateTime = new Date().toISOString().substring(0, 16); // Initialize with current date and time
+    this.parsedSelectedDateTime = this.selectedDateTime.replace('T', ' '); // Replace generic time format marker with space
     this.intervalId = setInterval(() => {
       this.setCurrentDateTime();
       this.updateDifferenceDateTime(); // Update countdown every second
-    }, 1000); // Update current time every second
+    }, 1000);
   }
 
   ngOnDestroy() {
@@ -29,12 +31,12 @@ export class DateSelectComponent implements OnInit, OnDestroy {
   }
 
   updateDifferenceDateTime() {
-    // New method added
     const selectedTime = new Date(this.selectedDateTime).getTime(); // Convert selected date to milliseconds
+    this.parsedSelectedDateTime = this.selectedDateTime.replace('T', ' '); // Replace generic time format marker with space
     const currentTime = new Date().getTime(); // Get current time in milliseconds
-    const difference = selectedTime - currentTime; // Calculate the difference
+    const difference = selectedTime - currentTime;
 
-    // Only calculate if the selected time is inß the future
+    // Only calculate if the selected time is in the future
     if (difference > 0) {
       const seconds = Math.floor((difference / 1000) % 60);
       const minutes = Math.floor((difference / (1000 * 60)) % 60);
