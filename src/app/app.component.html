@@ -8,6 +8,13 @@
     {{ title }}: {{ selectedTitle }}
   </h1>
 
+  <h2
+    *ngIf="selectedTitle; else titlePrompt"
+    class="font-bold text-gray-800 text-center text-nowrap w-full flex justify-between"
+  >
+    <span *ngFor="let char of selectedTitle.split('')">{{ char }}</span>
+  </h2>
+
   <ng-template #titlePrompt>
     <h1 class="font-bold text-gray-800 text-center text-4xl">
       Input a title for your event?
