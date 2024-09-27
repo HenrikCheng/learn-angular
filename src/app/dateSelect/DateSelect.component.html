@@ -1,9 +1,15 @@
 <div>
-  <p>{{ message }}</p>
-  <input type="datetime-local" [(ngModel)]="selectedDateTime" />
-  <p>Selected Date and Time: {{ selectedDateTime }}</p>
+  <label for="dateTime">Select Date and Time:</label>
+  <input
+    id="dateTime"
+    type="datetime-local"
+    [(ngModel)]="selectedDateTime"
+    aria-label="Select a date and time"
+  />
 
-  <p>Current Date and Time: {{ currentDateTime }}</p>
-
-  <p>Countdown to Selected Time: {{ differenceDateTime }}</p>
+  <div>
+    <p>Selected Date and Time: {{ selectedDateTime }}</p>
+    <p>Current Date and Time: {{ currentDateTime }}</p>
+    <p>Countdown to Selected Time: {{ differenceDateTime }}</p>
+  </div>
 </div>
