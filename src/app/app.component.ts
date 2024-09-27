@@ -38,15 +38,24 @@ export class AppComponent implements AfterViewInit {
   }
 
   compareWidth() {
-    if (this.windowWidth && this.width && this.windowWidth < this.width) {
-      console.log('Window width is less than the element width');
+    if (this.windowWidth && this.width) {
       const currentIndex = this.textSizesArr.indexOf(this.textSize);
-      if (currentIndex > 0) {
-        this.textSize = this.textSizesArr[currentIndex - 1];
+
+      if (this.windowWidth < this.width) {
+        console.log('Window width is less than the element width');
+        // Decrement size if current size isn't the smallest
+        if (currentIndex > 0) {
+          this.textSize = this.textSizesArr[currentIndex - 1];
+        }
+      } else if (this.windowWidth - this.width >= 70) {
+        console.log(
+          'Window width is at least 50px larger than the element width'
+        );
+        // Increment size if current size isn't the largest
+        if (currentIndex < this.textSizesArr.length - 1) {
+          this.textSize = this.textSizesArr[currentIndex + 1];
+        }
       }
-    } else {
-      console.log('Window width is greater than or equal to the element width');
-      // Check if below size is greater than window, if not, decrement size
     }
   }
 
