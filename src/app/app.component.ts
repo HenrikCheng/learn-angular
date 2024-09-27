@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'Title:';
+  title = 'Event title';
   selectedTitle: string | null = null; // To store the selected title
 
   onTitleSelected(title: string) {

@@ -3,12 +3,12 @@
     *ngIf="selectedTitle; else titlePrompt"
     class="text-4xl font-bold text-gray-800"
   >
-    {{ title }} {{ selectedTitle }}
+    {{ title }}: {{ selectedTitle }}
   </h1>
 
   <ng-template #titlePrompt>
     <h1 class="text-4xl font-bold text-gray-800">
-      Input a title for your event
+      Input a title for your event?
     </h1>
   </ng-template>
 
