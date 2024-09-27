@@ -1,3 +1,9 @@
-<label for="item-input">TitleInput</label>
-<input type="text" id="item-input" #newItem />
-<button type="button" (click)="inputTitle(newItem.value)">Add to parent</button>
+<div>
+  <label for="item-input">TitleInput</label>
+  <input
+    id="item-input"
+    #newItem
+    (keyup)="inputTitle(newItem.value)"
+    aria-label="Input title"
+  />
+</div>
