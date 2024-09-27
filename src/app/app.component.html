@@ -1,9 +1,18 @@
-<!-- src/app/app.component.html -->
-
 <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-  <h1 class="text-4xl font-bold text-gray-800">{{ title }}</h1>
+  <h1
+    *ngIf="selectedTitle; else titlePrompt"
+    class="text-4xl font-bold text-gray-800"
+  >
+    {{ title }} {{ selectedTitle }}
+  </h1>
 
-  <app-title-input></app-title-input>
+  <ng-template #titlePrompt>
+    <h1 class="text-4xl font-bold text-gray-800">
+      Input a title for your event
+    </h1>
+  </ng-template>
+
+  <app-title-input (titleSelected)="onTitleSelected($event)"></app-title-input>
   <app-date-select></app-date-select>
 </div>
 
