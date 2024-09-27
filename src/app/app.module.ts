@@ -4,10 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { DateSelect } from './dateSelect/DateSelect.component';
+import { DateSelectComponent } from './dateSelect/DateSelect.component';
 
 @NgModule({
-  declarations: [AppComponent, DateSelect],
+  declarations: [AppComponent, DateSelectComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

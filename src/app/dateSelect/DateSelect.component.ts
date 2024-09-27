@@ -1,15 +1,15 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'date-select',
+  selector: 'app-date-select',
   templateUrl: './DateSelect.component.html',
 })
-export class DateSelect implements OnInit, OnDestroy {
-  @Input() message: string = ''; // Input message from parent component
+export class DateSelectComponent implements OnInit, OnDestroy {
+  @Input() message = ''; // Input message from parent component
 
-  selectedDateTime: string = ''; // Stores the selected date and time
-  currentDateTime: string = ''; // Stores the current date and time
-  differenceDateTime: string = ''; // Stores the countdown time
+  selectedDateTime = ''; // Stores the selected date and time
+  currentDateTime = ''; // Stores the current date and time
+  differenceDateTime = ''; // Stores the countdown time
   private intervalId: any; // Holds the interval ID for updating time
 
   ngOnInit() {
