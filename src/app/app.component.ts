@@ -10,7 +10,7 @@ export class AppComponent implements AfterViewInit {
   selectedTitle: string | null = null;
   width: number | null = null;
   windowWidth: number | null = null;
-  TailwindTextSizes = [
+  textSizesArr = [
     'text-xs',
     'text-sm',
     'text-base',
@@ -25,6 +25,7 @@ export class AppComponent implements AfterViewInit {
     'text-8xl',
     'text-9xl',
   ] as const;
+  textSize: (typeof this.textSizesArr)[number] = this.textSizesArr[12];
 
   @ViewChild('eventTitle', { static: false }) eventTitle!: ElementRef;
 
@@ -39,7 +40,10 @@ export class AppComponent implements AfterViewInit {
   compareWidth() {
     if (this.windowWidth && this.width && this.windowWidth < this.width) {
       console.log('Window width is less than the element width');
-      // Increment size
+      const currentIndex = this.textSizesArr.indexOf(this.textSize);
+      if (currentIndex > 0) {
+        this.textSize = this.textSizesArr[currentIndex - 1];
+      }
     } else {
       console.log('Window width is greater than or equal to the element width');
       // Check if below size is greater than window, if not, decrement size
@@ -50,8 +54,13 @@ export class AppComponent implements AfterViewInit {
     this.getWidth();
   }
 
+  calculateTextClass() {
+    console.log('textSize: ', this.textSize);
+  }
+
   onTitleSelected(title: string) {
     this.selectedTitle = title;
     this.getWidth();
+    this.calculateTextClass();
   }
 }
