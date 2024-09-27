@@ -5,13 +5,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './DateSelect.component.html',
 })
 export class DateSelectComponent implements OnInit, OnDestroy {
-  selectedDateTime = ''; // Stores the selected date and time
-  currentDateTime = ''; // Stores the current date and time
-  differenceDateTime = ''; // Stores the countdown time
-  private intervalId: any; // Holds the interval ID for updating time
+  selectedDateTime = '';
+  currentDateTime = '';
+  differenceDateTime = '';
+  private intervalId: any;
 
   ngOnInit() {
-    this.setCurrentDateTime(); // Set the current date and time
+    this.setCurrentDateTime();
     this.selectedDateTime = new Date().toISOString().substring(0, 16); // Initialize with current date and time
     this.intervalId = setInterval(() => {
       this.setCurrentDateTime();
@@ -34,17 +34,16 @@ export class DateSelectComponent implements OnInit, OnDestroy {
     const currentTime = new Date().getTime(); // Get current time in milliseconds
     const difference = selectedTime - currentTime; // Calculate the difference
 
+    // Only calculate if the selected time is inß the future
     if (difference > 0) {
-      // Only calculate if the selected time is in the future
       const seconds = Math.floor((difference / 1000) % 60);
       const minutes = Math.floor((difference / (1000 * 60)) % 60);
       const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-      // Format the countdown string
       this.differenceDateTime = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     } else {
-      this.differenceDateTime = 'Time has passed'; // Message if time has passed
+      this.differenceDateTime = 'Time has passed';
     }
   }
 }
