@@ -1,4 +1,10 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  HostListener,
+} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +40,12 @@ export class AppComponent implements AfterViewInit {
     this.adjustTextSize();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.updateWidths();
+    this.adjustTextSize();
+  }
+
   onTitleSelected(title: string) {
     this.selectedTitle = title;
     this.adjustTextSize();
@@ -49,15 +61,17 @@ export class AppComponent implements AfterViewInit {
   }
 
   updateWidths() {
-    this.elementWidth =
-      this.eventTitle.nativeElement.getBoundingClientRect().width;
-    this.windowWidth = window.innerWidth;
-    console.log(
-      'Element width:',
-      this.elementWidth,
-      'Window width:',
-      this.windowWidth
-    );
+    if (this.eventTitle && this.eventTitle.nativeElement) {
+      this.elementWidth =
+        this.eventTitle.nativeElement.getBoundingClientRect().width;
+      this.windowWidth = window.innerWidth;
+      console.log(
+        'Element width:',
+        this.elementWidth,
+        'Window width:',
+        this.windowWidth
+      );
+    }
   }
 
   isElementWiderThanWindow(): boolean {
