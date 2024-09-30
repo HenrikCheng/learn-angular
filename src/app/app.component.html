@@ -1,19 +1,13 @@
 <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-  <h1
-    *ngIf="selectedTitle; else titlePrompt"
-    #eventTitle
-    [ngClass]="textSize"
-    class="font-bold text-gray-800 text-center text-nowrap"
-  >
-    {{ title }}: {{ selectedTitle }}
-  </h1>
-
-  <h2
-    *ngIf="selectedTitle; else titlePrompt"
-    class="font-bold text-gray-800 text-center text-nowrap w-full flex justify-between"
-  >
-    <span *ngFor="let char of selectedTitle.split('')">{{ char }}</span>
-  </h2>
+  <ng-container *ngIf="selectedTitle; else titlePrompt">
+    <h1
+      #eventTitle
+      [ngClass]="textSize"
+      class="font-bold text-gray-800 text-center text-nowrap w-full flex justify-between flex-wrap-nowrap overflow-x-visible"
+    >
+      <span *ngFor="let char of selectedTitle.split('')">{{ char }}</span>
+    </h1>
+  </ng-container>
 
   <ng-template #titlePrompt>
     <h1 class="font-bold text-gray-800 text-center text-4xl">
