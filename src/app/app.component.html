@@ -1,5 +1,5 @@
 <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-  <ng-container *ngIf="selectedTitle; else titlePrompt">
+  <!-- <ng-container *ngIf="selectedTitle; else titlePrompt">
     <h1
       #eventTitle
       [ngClass]="textSize"
@@ -15,8 +15,15 @@
     </h1>
   </ng-template>
 
+  <button popovertarget="my-popover">Test</button>
+  <div id="my-popover" popover class="w-9/12 h-2/5 bg-slate-900 text-white">
+    Hello World
+    <button popovertarget="my-popover">x</button>
+  </div>
+
   <app-title-input (titleSelected)="onTitleSelected($event)"></app-title-input>
-  <app-date-select></app-date-select>
+  <app-date-select></app-date-select> -->
+  <app-sound-player></app-sound-player>
 </div>
 
 <router-outlet></router-outlet>
