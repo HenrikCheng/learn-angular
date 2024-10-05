@@ -9,7 +9,7 @@ export class SoundPlayerComponent {
   audio: HTMLAudioElement;
 
   constructor() {
-    this.audio = new Audio('assets/womb-sound.mp3'); // Replace with your local file path
+    this.audio = new Audio('assets/womb-sound.mp4'); // Replace with your local file path
     this.audio.loop = true; // Enable looping
   }
 
