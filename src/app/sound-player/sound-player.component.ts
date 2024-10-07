@@ -7,5 +7,5 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 export class SoundPlayerComponent {
   isPlaying = false;
 
-  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
+  @ViewChild('audioPlayer') audioPlayer?: ElementRef<HTMLAudioElement>;
 }
