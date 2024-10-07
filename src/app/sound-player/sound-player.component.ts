@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-sound-player',
@@ -7,7 +7,5 @@ import { Component } from '@angular/core';
 export class SoundPlayerComponent {
   isPlaying = false;
 
-  togglePlay() {
-    this.isPlaying = !this.isPlaying;
-  }
+  @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
 }

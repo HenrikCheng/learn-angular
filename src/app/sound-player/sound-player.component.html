@@ -2,7 +2,14 @@
   class="w-screen h-screen flex justify-center items-center transition-colors duration-500 flex-col"
   [ngClass]="{ 'bg-black': isPlaying, 'bg-white': !isPlaying }"
 >
-  <audio #audioPlayer controls loop preload="auto">
+  <audio
+    #audioPlayer
+    controls
+    loop
+    preload="auto"
+    (play)="isPlaying = true"
+    (pause)="isPlaying = false"
+  >
     <source src="assets/womb-sound-4.mp3" type="audio/mp3" />
     Your browser does not support the audio element.
   </audio>
